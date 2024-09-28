@@ -48,9 +48,10 @@ for i in range(N*M):
     df.drop(str(i), axis=1, inplace=True)
 
 
-# data_by_num[the number of tester][group_num]
+# data_by_num[the number of the tester][group_num]
 data_by_num = [[DATA(M, df.iloc[num, i*M:(i+1)*M]) for i in range(N)] for num in range(NUM)]
 
+# average
 # AVG = [A0, A1, A2]
 # which Ai = sum(data_by_num[for all num][i].SUM) / (M*NUM)
 AVG = [sum(data_by_num[num][i].SUM for num in range(NUM)) / (M*NUM)  for i in range(N)]
