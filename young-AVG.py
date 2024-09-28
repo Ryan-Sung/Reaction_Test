@@ -13,7 +13,7 @@ df = pd.read_csv('formed.csv')
 
 df.drop(df.columns[0], axis=1, inplace = True)
 
-group = [[[]]for i in range(3)] 
+group = [[[]]for a in range(3)] 
 for i in df:
     n = 0
     for j in df[i]:
