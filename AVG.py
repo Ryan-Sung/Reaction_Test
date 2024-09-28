@@ -14,7 +14,7 @@ class DATA:
         self.AVG = [sum(X)/M for X in self.X]
         
         # ddof = 1 -> sample deviation not population one
-        self.STDEV = [np.std(np.array(X), ddof=1) for X in self.X]
+        self.STDEV = [np.std(X, ddof=1) for X in self.X]
         
         # type A/B uncertainty
         self.VA = [ stdev / (M**0.5) for stdev in self.STDEV ]

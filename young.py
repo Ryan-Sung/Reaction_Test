@@ -3,9 +3,13 @@ import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
+import os
     
+print(int(True))
 
+# matplotlib.rc('font', family='Microsoft YaHei')
 matplotlib.rc('font', family='Apple LiSung')
+
 
 N, M, NUM = 3, 5, 41
         
@@ -32,10 +36,8 @@ for i in df:
 # print(group)
 def uC(samples:list[list]):
     sum = 0
-    print(type(samples), f" size={len(samples)}")
     pow_ub = 0.01/12 # pow(0.1/2/sqrt(3)) = 0.01 / (4*3)
     for i in samples:
-        print('\t', type(i), f"size = {len(i)}")
         sum += pow(np.std(i, ddof=1), 2)/n + pow_ub
     return np.sqrt(sum)
     
