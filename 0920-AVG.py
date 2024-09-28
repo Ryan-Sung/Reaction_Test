@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 
 matplotlib.rc('font', family='Microsoft YaHei')
         
+N, M, NUM = 3, 5, 41
+        
 # 讀取 Excel 檔案中的資料
 df = pd.read_csv('formed.csv')
 
@@ -15,16 +17,10 @@ group = [[[]]for i in range(3)]
 for i in df:
     n = 0
     for j in df[i]:
-        if int(int(i)/5) == 0:
-            if len(group[0]) - 1 < n:
-                group[0].append([])
-                group[1].append([])
-                group[2].append([])
-            group[0][n].append(j)
-        elif int(int(i)/5) == 1:
-            group[1][n].append(j)
-        else:
-            group[2][n].append(j)
+        i = int(i)
+        if len(group[0]) - 1 < n: 
+            for k in group : k.append([])
+        group[int(i/M)][n].append(j)
         n+=1
 
 def uC(samples:list[list]):
@@ -37,11 +33,8 @@ def uC(samples:list[list]):
 
 X = ["對照組", "99乘法組", "拍肩舉手組"]
 Y = [np.average(i) for i in group]
-V = [uC(i) for i in group]
+V = [round(uC(i), 3) for i in group]
 
-
-# V = [round(V[i]*1000)/1000 for i in range(N)]
-V = [ round(x, 3) for x in V ]
 plt.bar(X, Y, yerr = V, ecolor = '#00BB00')
 
 plt.title("三種變因的接尺實驗數據長條圖 - 第四組", fontsize = 20)
