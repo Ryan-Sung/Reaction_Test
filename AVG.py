@@ -5,7 +5,9 @@ import matplotlib.pyplot as plt
 import math
 import platform
 
+
 matplotlib.rc('font', family=['Microsoft YaHei', 'Apple LiSung'][platform.system()=="Darwin"])
+
 
 '''
 N = group number
@@ -16,8 +18,10 @@ LEAST_COUNT = 0.1 (cm)
 '''
 N, M, NUM, PRECISION, LEAST_COUNT = 3, 5, 41, 3, 0.1
 
+
 def sqrt(x):
     return x**0.5
+
 
 class DATA:
     def __init__(self, sz:int, argv:list):
@@ -41,6 +45,8 @@ class DATA:
         print("stdev =", self.STDEV)
         print("uncertainty =", self.UC)
 
+
+
 df = pd.read_csv('formed.csv')
 df.drop('num', axis=1, inplace = True)
 for i in range(N*M):
@@ -51,10 +57,12 @@ for i in range(N*M):
 # data_by_num[the number of the tester][group_num]
 data_by_num = [[DATA(M, df.iloc[num, i*M:(i+1)*M]) for i in range(N)] for num in range(NUM)]
 
+
 # average
 # AVG = [A0, A1, A2]
 # which Ai = sum(data_by_num[for all num][i].SUM) / (M*NUM)
 AVG = [sum(data_by_num[num][i].SUM for num in range(NUM)) / (M*NUM)  for i in range(N)]
+
 
 # uncertainty
 # U = [U0, U1, U2]
