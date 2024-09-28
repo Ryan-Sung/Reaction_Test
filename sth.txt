@@ -1,2 +1,0 @@
-U1 = sqrt(ua1^2 + ub^2)
-U = sqrt(U1^2 + U2^2 + ... + U41^2) = sqrt(sum(ua^2) + N*(ub^2))
